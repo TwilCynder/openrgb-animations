@@ -1,6 +1,6 @@
 {
-  "name": "openrgb-animations",
-  "version": "0.1.1",
+  "name": "@twilcynder/openrgb-animations",
+  "version": "1.0.0",
   "description": "Various animations you can use with openrgb-sdk",
   "main": "main.js",
   "scripts": {
