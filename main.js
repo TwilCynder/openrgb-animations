@@ -1,5 +1,5 @@
 import { Client, utils } from "openrgb-sdk";
-import { BasicWave, BasicWaveDuration, BasicWaveSpeed, ThinWave } from "./animations/wave.js";
+import { ThinWaveCenteredDurationLoop } from "./animations/wave.js";
 
 let client = new Client("Test Animation", 6742, "0.0.0.0");
 
@@ -13,7 +13,7 @@ try {
 let red = utils.color(255, 0, 0);
 let black = utils.color(0, 0, 0);
 
-let tm = ThinWave(client, 5, 10, 100, 350, red, black);
+let tm = ThinWaveCenteredDurationLoop(client, 5, 10, 4, 500, 0, red, black, 3);
 
 await tm.promise;
 
