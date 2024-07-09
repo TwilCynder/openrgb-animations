@@ -194,3 +194,37 @@ export function ThinWaveCenteredSpeedLoop(client, device, ledsNB, startingLed, w
     return ThinWaveCenteredLoop(client, device, ledsNB, startingLed, 1000 / waveSpeed, pauseDuration, fgColor, bgColor, loops)
 }
 
+async function runMultiThinWave(tm, client, device, ledsNB, startingLed, wavesNB, gap, waveDelay, fgColor, bgColor){
+    let maxDist = max(startingLed, ledsNB - startingLed - 1) + 1;
+    for (let i = 0; i < maxDist + gap * (wavesNB - 1); i++){
+        let array = colorArray(ledsNB, bgColor);
+        for (let w = 0; w < wavesNB; w++){
+            let dist = i - (w * gap);
+            
+            if (dist < 0) break;
+
+            let led = startingLed + dist;
+            if (led < ledsNB){
+                array[led] = fgColor;
+            }
+
+            led = startingLed - dist;
+            if (led >= 0){
+                array[led] = fgColor;
+            }
+
+        }
+
+        client.updateLeds(device, array);
+        await tm.sleep(waveDelay);
+    }
+
+    let array = colorArray(ledsNB, bgColor);
+    client.updateLeds(device, array);
+}
+
+export function MultiThinWave(client, device, ledsNB, startingLed, wavesNB, gap, waveDelay, fgColor, bgColor){
+    return animate(async tm => {
+        await runMultiThinWave(tm, client, device, ledsNB, startingLed, wavesNB, gap, waveDelay, fgColor, bgColor);
+    })
+}
