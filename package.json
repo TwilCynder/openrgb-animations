@@ -1,0 +1,19 @@
+{
+  "name": "openrgb-animations",
+  "version": "0.1.1",
+  "description": "Various animations you can use with openrgb-sdk",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "openrgb"
+  ],
+  "author": "TwilCynder",
+  "license": "ISC",
+  "dependencies": {
+    "@twilcynder/timing-util": "^2.0.0",
+    "openrgb-sdk": "^0.5.2"
+  },
+  "type": "module"
+}
