@@ -228,3 +228,11 @@ export function MultiThinWave(client, device, ledsNB, startingLed, wavesNB, gap,
         await runMultiThinWave(tm, client, device, ledsNB, startingLed, wavesNB, gap, waveDelay, fgColor, bgColor);
     })
 }
+
+export function MultiThinWaveSpeed(client, device, ledsNB, startingLed, wavesNB, gap, waveSpeed, fgColor, bgColor){
+    return MultiThinWave(client, device, ledsNB, startingLed, wavesNB, gap, 1000 / waveSpeed, fgColor, bgColor);
+}
+
+export function MultiThinWaveDuration(client, device, ledsNB, startingLed, wavesNB, gap, waveDuration, fgColor, bgColor){
+    return MultiThinWave(client, device, ledsNB, startingLed, wavesNB, gap, waveDuration / (ledsNB > 1 ? ledsNB - 1 : 1), fgColor, bgColor);
+}
